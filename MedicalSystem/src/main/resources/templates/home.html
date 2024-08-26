@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    
+   <title>Patients&Medication Management</title>
+   <link rel="stylesheet" href="/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+  <body>
+<nav class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/patients">Patients</a></li>
+      <li><a href="/doctors">Doctors</a></li>
+      <li><a href="/medicines">Medicines</a></li>
+      <li><a href="/appointments">Appointments</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/patients/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/patients/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+</nav>
+
+<h1 style="text-align:center">Patient&Medication Management</h1>
+<div class="container">
+
+<div class="card-deck">
+    <div class="card p-3" style="background-color:rgb(216, 217, 213);">
+      <div class="card-body text-center">
+        <h3 class="card-title">Total Appointments</h3>
+         <h4 class="card-text"><span th:text="${totalA}"></span></h4>
+      </div>
+    </div>
+    <div class="card p-3" style="background-color:rgb(216, 217, 213);">
+      <div class="card-body text-center">
+        <h3 class="card-title">Total Doctors</h3>
+              <h4 class="card-text"><span th:text="${totalD}"></span></h4>
+      </div>
+    </div>
+    <div class="card p-3" style="background-color:rgb(216, 217, 213);">
+      <div class="card-body text-center">
+        <h3 class="card-title">Total Patients</h3>
+        <h4 class="card-text"><span th:text="${totalP}"></span></h4>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<div class="container">
+<div class="card-deck">
+    <div class="card p-3">
+      <div class="card-body text-center">
+        <h3 class="card-title fs-3">Patient Registration</h3>
+        <p class="card-text ">New to this hospital. Please Register here with your details for future Use.</p>
+        <a href="/patients/add" class="btn btn-primary mt-2" id="register-link">REGISTER</a>
+      </div>
+    </div>
+    <div class="card p-3">
+      <div class="card-body text-center">
+        <h3 class="card-title fs-3">Book Appointment</h3>
+         <p class="card-text">You can book appointment with our respected Doctors. </p>
+         <a href="/appointments/add" class="btn btn-primary mt-2" id="appointment-link">BOOK NOW</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="script.js"></script>
+    <script>
+        const navBar = document.querySelector("nav"),
+       menuBtns = document.querySelectorAll(".menu-icon"),
+       overlay = document.querySelector(".overlay");
+
+     menuBtns.forEach((menuBtn) => {
+       menuBtn.addEventListener("click", () => {
+         navBar.classList.toggle("open");
+       });
+     });
+
+     overlay.addEventListener("click", () => {
+       navBar.classList.remove("open");
+     });
+    </script>
+  </body>
+</html>

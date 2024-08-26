@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MedicalSystem</title>
+    <link rel="stylesheet" href="/styles.css" />
+     <link rel="stylesheet" href="/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/patients">Patients</a></li>
+      <li><a href="/doctors">Doctors</a></li>
+      <li><a href="/medicines">Medicines</a></li>
+      <li><a href="/appointments">Appointments</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/patients/add"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/patients/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<h1 style="text-align:center">Patients List</h1>
+
+        <div class="container">
+    <table border="1" class="table table-bordered">
+    <thead>
+        <tr>
+       		<th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <!-- <th>Gender</th> -->
+            <th>DOB</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>ZipCode</th>
+            <th>Mobile Number</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="patient : ${patients}">
+        	<td th:text="${patient.id}"></td>
+            <td th:text="${patient.fname}"></td>
+            <td th:text="${patient.lname}"></td>
+            <td th:text="${patient.email}"></td>
+            <!-- <td th:text="${patient.gender}"></td> -->
+            <td th:text="${patient.dob}"></td>
+            <td th:text="${patient.age}"></td>
+            <td th:text="${patient.city}"></td>
+            <td th:text="${patient.zipcode}"></td>
+            <td th:text="${patient.number}"></td>
+            <td>
+                <a th:href="@{/patients/edit/{id}(id=${patient.id})}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
